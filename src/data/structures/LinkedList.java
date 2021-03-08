@@ -55,12 +55,16 @@ public class LinkedList<T> implements List
 			
 		}
 		newNode.next = new Node((T)item);
+		count++;
 		
 	}
 
 	@Override
 	public void insertAt(Object item, int index)
 	{
+		
+		if (index<count && index>0) {
+		
 		Node<T> node = head;
 		Node<T> newNode = new Node();
 		newNode.data = (T) item;
@@ -83,11 +87,13 @@ public class LinkedList<T> implements List
 		count++;
 		
 		}
+		}
 	}
 
 	@Override
 	public void removeAt(int index) {
 		// TODO Auto-generated method stub
+		if (index<count && index>0) {
 		Node<T> node = head;
 		
 		for (int i = 0; i < index-1; i++)
@@ -96,7 +102,8 @@ public class LinkedList<T> implements List
 		}
 		
 		node.next = node.next.next;
-		
+		count--;
+		}
 	}
 
 	@Override
@@ -112,6 +119,7 @@ public class LinkedList<T> implements List
 		if (node.next!=null) {
 			
 			node.next = node.next.next;
+			count--;
 		}
 		
 	}
@@ -120,6 +128,8 @@ public class LinkedList<T> implements List
 	public Object get(int index) {
 		// TODO Auto-generated method stub
 		
+		if (index<count && index>0) {
+			
 		
 		Node<T> node = head;
 		
@@ -128,12 +138,15 @@ public class LinkedList<T> implements List
 			node = node.next;
 		}
 		return node.data;
+		}
+		return "Ivalid index";
 	}
 
 	@Override
 	public void clear()
 	{
-		
+		this.count = 0;
+		this.head = new Node();
 	}
 
 	
