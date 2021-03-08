@@ -17,6 +17,11 @@ public class Node<T>
 		this.next = null;
 	}
 	
+	public Node()
+	{
+		
+	}
+
 	public String toString()
 	{
 		 return data.toString();
